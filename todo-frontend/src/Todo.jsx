@@ -12,7 +12,9 @@ export default function Todo(){
     const [editDescription,setEditDescription]=useState("")
 
 
-    const apiUrl="http://localhost:8000"
+    // const apiUrl="http://localhost:8000"
+
+    const apiUrl="https://todo-v3c8.onrender.com"
 
     const handleSubmit=()=>{
 
@@ -79,7 +81,7 @@ export default function Todo(){
         //check inputs
         if(editTitle.trim() !== '' && editDescription.trim() !== ''){
             
-            fetch(apiUrl+"/todos/"+editId,{
+                fetch(apiUrl+"/todos/"+editId, {
                 method:"PUT",
                 headers:{
                     'Content-Type':'application/json'
@@ -127,7 +129,7 @@ export default function Todo(){
 
   const handleDelete=(id)=>{
     if(window.confirm('Are You Sure To Delete ')){
-        fetch(apiUrl+'/todos/'+id,{
+            fetch(apiUrl+'/todos/'+id, {
             method:"DELETE"
         })
         .then(()=>{
