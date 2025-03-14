@@ -9,13 +9,16 @@ const app=express();
 app.use(express.json())
 app.use(cors())
 
+require('dotenv').config();
+
 
 //sample in memory storage for todo item
 // let todos=[];
 
 
 //connecting mongodb
-mongoose.connect('mongodb://localhost:27017/mern-app')
+// mongoose.connect('mongodb://localhost:27017/mern-app')
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
   console.log('Db Connected')
 })
@@ -35,7 +38,9 @@ const todoSchema=new mongoose.Schema({
 })
 
 //creating model
-const todoModel=mongoose.model('Todo',todoSchema);
+// const todoModel=mongoose.model('Todo',todoSchema);
+const todoModel=mongoose.model('todos',todoSchema);
+
 
 
 //create a new todoitem
